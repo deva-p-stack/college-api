@@ -53,7 +53,7 @@ colleges.forEach(college => {
  
 
 
-let html = '';
+let result = '';
 
 colleges.forEach(college => {
   result += `
