@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let state = document.getElementById("state");
   let containerEl = document.getElementById("con");
   const institutionTypeEl = document.getElementById("institution");
+  let UniversityEl = document.getElementById("University");
+  let programmeEl = document.getElementById("programme");
+
 
   // data var
   const BASE_API_KEY = "https://indian-colleges-list.vercel.app/api";
@@ -69,8 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // unique district name using the set method remove the duplicates
       const uniqueDistricts = [
-        ...new Set(collageDataArr.map((item) => item.district)),
-      ].sort();
+        ...new Set(collageDataArr.map((item) => item.district)),].sort();
+
+      
 
       // console.log(uniqueDistricts);
 
@@ -83,9 +87,47 @@ document.addEventListener("DOMContentLoaded", function () {
         option.value = dist;
 
         district.append(option);
+
+          // this clearn inside thecontetn of the university tag prevent previous values
+          UniversityEl.innerHTML ="";
+
+
+
+          // uniques value
+
+          let uniqueUniversity = [
+
+            ... new Set(collageDataArr.map((item)=> item.university)),].sort();
+
+         
+        let valuesToRemove = ["NOT APPLICABLE", "NONE", "None", "Self", "SELF"];
+
+        let finalvalues = uniqueUniversity.filter(item => !valuesToRemove.includes(item));
+
+            finalvalues.forEach((univ)=>{
+              let option = document.createElement("option");
+
+              option.textContent = univ;
+              option.value = univ;
+              UniversityEl.append(option);
+            })
       });
 
-      // All option add
+        // programme drop add ti
+              programmeEl.innerHTML ="";
+        
+             const uniqueprogrammes = [ ...new Set(collageDataArr.flatMap((item) =>item.programmes.map((p) => p.programme)))].sort();
+
+              uniqueprogrammes.forEach((prog) => {
+                let option = document.createElement("option");
+
+                option.textContent = prog;
+                option.value = prog;
+
+                programmeEl.append(option);
+              });
+
+      // All option add in dropdown a district 
       const allDistOptionEl = document.createElement("option");
       allDistOptionEl.textContent = "All Districts";
       allDistOptionEl.value = "All";
@@ -139,8 +181,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const districtEl = document.createElement("p");
       districtEl.textContent = `District: ${collage.district}`;
 
+        const universityEl2 = document.createElement("p");
+        universityEl2.textContent = `University: ${collage.university}`;
+
       const addressEl = document.createElement("p");
       addressEl.textContent = `Address: ${collage.address}`;
+
+
+      const programmeEl = document.createElement("p");
+      programmeEl.textContent = `Programme: ${collage.programmes[0].programme}`;
+
+
 
       // append
       cardEl.append(
@@ -149,6 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
         stateEl,
         districtEl,
         addressEl,
+        universityEl2,
+        programmeEl
       );
       fragment.append(cardEl);
     });
@@ -199,8 +252,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  
+  // search by collage name
+  function collageSearchByName() {
+    const searchValue = searchInputEL.value.toUpperCase();
+    // console.log("fscscst aBctxx ".includes("aBct"));
+    const filteredData = collageDataArr.filter((collage) => 
+      collage.institute_name.includes(searchValue),
+    );
+    renderFn(filteredData);
+  }
+
   // input search
-  // search.addEventListener("input", function () {
-  //   getSearchByState();
-  // });
+  searchBtnEl.addEventListener("click", collageSearchByName);
 });
