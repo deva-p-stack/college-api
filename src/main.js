@@ -1,6 +1,8 @@
 import "./style.css";
-
+document.addEventListener("DOMContentLoaded", function () {
+ 
 // element var
+const district = document.getElementById("district");
 let search = document.getElementById("search");
 let state = document.getElementById("state");
 let containerEl = document.getElementById("con");
@@ -25,7 +27,10 @@ async function getState() {
       option.textContent = `${item.name}`;
       option.value = item.name;
 
+      
+
       state.append(option);
+     
     });
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -50,8 +55,33 @@ async function getSearchByState(stateName) {
     // const collageArr = data.data;
     // console.log(collageArr);
 
+// data is  the object format ,
+// data.data is a array format ,
+// console.log(typeof data);
+
     collageDataArr = data.data;
+
+    console.log( collageDataArr);
+
+  //  Array.isArray(data.data);
+
+
+
     renderFn(collageDataArr);
+
+// unique district name using the set method remove the duplicates 
+    const uniqueDistricts = [
+      ...new Set(collageDataArr.map(item => item.district))
+    ];
+
+  // district name add to the drop down list
+
+    uniqueDistricts.forEach((dist) => {
+      let option = document.createElement("option");
+      option.textContent = dist;
+      option.value = dist;
+      district.append(option);
+    });
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -145,4 +175,6 @@ institutionTypeEl.addEventListener("change", () => {
 // input search
 search.addEventListener("input", function () {
   getSearchByState();
+});
+
 });
