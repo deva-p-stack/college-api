@@ -69,6 +69,9 @@ async function getSearchByState(stateName) {
 
     renderFn(collageDataArr);
 
+    // this clear inside content of the district tag prevent previous values
+    district.innerHTML = "";
+
 // unique district name using the set method remove the duplicates 
     const uniqueDistricts = [
       ...new Set(collageDataArr.map(item => item.district))
@@ -78,9 +81,13 @@ async function getSearchByState(stateName) {
 
     uniqueDistricts.forEach((dist) => {
       let option = document.createElement("option");
+
       option.textContent = dist;
       option.value = dist;
+      
       district.append(option);
+    
+    
     });
   } catch (error) {
     console.error("Error fetching data:", error);
