@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   // result output div
-  function renderFn(collageData) {
+ function renderFn(collageData) {
     const fragment = document.createDocumentFragment();
     fragment.replaceChildren();
     containerEl.innerHTML = "";
@@ -184,8 +184,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       const courseBtnEl = document.createElement("button");
       courseBtnEl.className =
-        "absolute right-3 bottom-3 px-3 py-1 rounded bg-blue-400 text-white cursor-pointer";
-      courseBtnEl.textContent = `view courses`;
+        "absolute right-3 bottom-3 px-3 py-2 rounded bg-blue-400 text-white cursor-pointer";
+      courseBtnEl.textContent = `View Courses`;
 
       // course info show
       // console.log(collage);
