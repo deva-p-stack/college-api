@@ -161,30 +161,39 @@ document.addEventListener("DOMContentLoaded", async function () {
     collageData.forEach((collage) => {
       const cardEl = document.createElement("div");
       cardEl.className =
-        "bg-blue-300 w-full sm:w-87.5 min-h-50 space-y-2 rounded-lg shadow-lg p-5 pb-10 flex flex-col content-center border border-white/20 relative";
+        "bg-[#0F1C2B] w-full sm:w-87.5 min-h-50 space-y-2 shadow-lg rounded-lg shadow-lg p-5 pb-10 flex flex-col content-center border border-white/20 relative";
 
       const collageNameEl = document.createElement("h3");
-      collageNameEl.className = "font-semibold text-lg text-center";
+      collageNameEl.className = "font-semibold text-lg text-center text-slate-200 ";
       collageNameEl.textContent = collage.institute_name;
 
-      const institutionTypeEL = document.createElement("p");
-      institutionTypeEL.textContent = `Institutes Type: ${collage.institution_type}`;
-
-      const stateEl = document.createElement("p");
-      stateEl.textContent = `State: ${collage.state}`;
-
-      const districtEl = document.createElement("p");
-      districtEl.textContent = `District: ${collage.district}`;
-
+      
       const universityEl2 = document.createElement("p");
       universityEl2.textContent = `University: ${collage.university}`;
 
+      universityEl2.className = "text-slate-400 pt-1";
+
+
+
+      const institutionTypeEL = document.createElement("p");
+      institutionTypeEL.textContent = `Institutes Type: ${collage.institution_type}`;
+      institutionTypeEL.className="text-slate-400"
+
+      const stateEl = document.createElement("p");
+      stateEl.textContent = `State: ${collage.state}`;
+      stateEl.className ="pt-2 text-slate-400";
+
+      const districtEl = document.createElement("p");
+      districtEl.textContent = `District: ${collage.district}`;
+      districtEl.className ="pt-2 text-slate-400";
+ 
       const addressEl = document.createElement("p");
       addressEl.textContent = `Address: ${collage.address}`;
+      addressEl.className='pb-3 pt-2 text-slate-400';
 
       const courseBtnEl = document.createElement("button");
       courseBtnEl.className =
-        "absolute right-3 bottom-3 px-3 py-2 rounded bg-blue-400 text-white cursor-pointer";
+        "absolute right-3 bottom-3 px-3 py-2 bg-gray-800/90 text-white/90 active:scale-95 transition-all duration-300 ease-in-out hover:bg-gray-700/70  rounded   cursor-pointer";
       courseBtnEl.textContent = `View Courses`;
 
       // course info show
@@ -196,10 +205,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       cardEl.append(
         collageNameEl,
         institutionTypeEL,
+         universityEl2,
         stateEl,
         districtEl,
         addressEl,
-        universityEl2,
+       
         courseBtnEl,
       );
       fragment.append(cardEl);
