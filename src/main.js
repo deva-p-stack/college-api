@@ -163,37 +163,49 @@ document.addEventListener("DOMContentLoaded", async function () {
       cardEl.className =
         "bg-[#0F1C2B] w-full sm:w-87.5 min-h-50 space-y-2 shadow-lg rounded-lg shadow-lg p-5 pb-10 flex flex-col content-center border border-white/20 relative";
 
+
+             function toTitleCase(text) {
+                  return text
+                  .toLowerCase()
+                  .split(" ")
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ");
+}
+
+
+
       const collageNameEl = document.createElement("h3");
       collageNameEl.className = "font-semibold text-lg text-center text-slate-200 ";
-      collageNameEl.textContent = collage.institute_name;
+      collageNameEl.textContent = collage.institute_name
 
       
-      const universityEl2 = document.createElement("p");
-      universityEl2.textContent = `University: ${collage.university}`;
+      
+        const universityEl2 = document.createElement("p");
+        universityEl2.className = "text-slate-100 pt-1";
+        universityEl2.innerHTML = `University: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.state)}</span>`;
 
-      universityEl2.className = "text-slate-400 pt-1";
-
+// ${collage.institution_type}
 
 
       const institutionTypeEL = document.createElement("p");
-      institutionTypeEL.textContent = `Institutes Type: ${collage.institution_type}`;
-      institutionTypeEL.className="text-slate-400"
+      institutionTypeEL.innerHTML = `Institution: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.institute_name)}</span>`;
+      institutionTypeEL.className="text-slate-100 "
 
       const stateEl = document.createElement("p");
-      stateEl.textContent = `State: ${collage.state}`;
-      stateEl.className ="pt-2 text-slate-400";
+      stateEl.innerHTML = `State: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.state)}</span>`;
+      stateEl.className ="pt-2 text-slate-100";
 
       const districtEl = document.createElement("p");
-      districtEl.textContent = `District: ${collage.district}`;
-      districtEl.className ="pt-2 text-slate-400";
+      districtEl.innerHTML = `District: <span class="font-semibold text-sky-400/80"> ${toTitleCase(collage.district)}</span>`;
+      districtEl.className ="pt-2 text-slate-100";
  
       const addressEl = document.createElement("p");
-      addressEl.textContent = `Address: ${collage.address}`;
-      addressEl.className='pb-3 pt-2 text-slate-400';
+      addressEl.innerHTML = `Address: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.address)}</span>`;
+      addressEl.className='pb-3 pt-2 text-slate-100';
 
       const courseBtnEl = document.createElement("button");
       courseBtnEl.className =
-        "absolute right-3 bottom-3 px-3 py-2 bg-gray-800/90 text-white/90 active:scale-95 transition-all duration-300 ease-in-out hover:bg-gray-700/70  rounded   cursor-pointer";
+        "absolute right-3 bottom-3 px-3 py-2 bg-slate-800/80 text-sky-400/80 active:scale-95 transition-all  border border-transparent hover:border-sky-400 hover:bg-transparent hover:-translate-y-0.5 duration-300 ease-in-out hover:bg-gray-700/70  rounded   cursor-pointer";
       courseBtnEl.textContent = `View Courses`;
 
       // course info show
@@ -201,10 +213,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       courseBtnEl.addEventListener("click", () => courseInfoShow(collage));
 
+ 
       // append
       cardEl.append(
         collageNameEl,
         institutionTypeEL,
+       
          universityEl2,
         stateEl,
         districtEl,
