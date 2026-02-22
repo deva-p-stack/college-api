@@ -19,21 +19,15 @@
         <img src="./public/cdn-white.svg" class="w-22 h-8" alt="company_log0" srcset="">
       </div>
 
-      <label for="Toggle" class="cursor-pointer md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-          viewBox="0 0 16 16">
-          <path fill="currentColor" fill-rule="evenodd"
-            d="M0 3.75A.75.75 0 0 1 .75 3h14.5a.75.75 0 0 1 0 1.5H.75A.75.75 0 0 1 0 3.75M0 8a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H.75A.75.75 0 0 1 0 8m.75 3.5a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5z"
-            clip-rule="evenodd" />
-        </svg>
-      </label>
+    
 
 
       <!-- nav link and nav items -->
-      <ul class="hidden gap-6 mr-20 md:flex text-md">
-         <li class="hover:bg-[#dee2eb] px-4 py-2 rounded-lg cursor-pointer  bg-gray-100 text-blue-500 font-medium text-xs active:scale-95 transition-all duration-300 ease-in-out ">
-          How It Works
-        </li>
+      <ul class=" gap-6 mr-5 lg:mr-20 md:flex text-md">
+        <a  href="https://indian-colleges-list.vercel.app/" target="_blank" class="hover:bg-[#dee2eb] px-4 py-2 rounded-lg cursor-pointer  bg-gray-100 text-blue-500 font-medium text-xs active:scale-95 transition-all duration-300 ease-in-out ">
+   
+         How It Works</a>
+        
 
         <!-- <li class="bg-[#F3F4F6] px-4 py-2 rounded-lg cursor-pointer  hover:bg-gray-100 text-blue-700 font-medium text-xs active:scale-95 transition-all duration-300 ease-in-out ">
           Indian Colleges (AICTE)
@@ -41,24 +35,20 @@
       </ul>
 
     </nav>
-    <!-- mobile view -->
-    <div class="flex flex-wrap hidden bg-gray-600 peer-checked:block md:hidden">
-      <ul class="flex flex-col w-full gap-4 p-4 text-center text-md">
-        <li><a href="#home" class="text-gray-200 hover:text-stone-800">Home</a></li>
-      </ul>
-    </div>
+   
+    
   </header>
 
-  <section class="w-full pt-10 flex flex-col items-center   min-h-[80vh] bg-[#07111d] p-5">
+  <section class="w-full pt-10 flex flex-col items-center   min-h-[79vh] bg-[#07111d] p-5">
 
 
     <div class="flex justify-center items-center py-3 w-full max-w-8xl ">
 
-      <div class="max-w-5xl w-full bg-[background: rgba(255, 255, 255, 0.22);]  bg-white/10 rounded-2xl shadow-lg backdrop-blur-sm border border-white/20  p-5 ">
+      <div class="max-w-5xl w-full bg-[background: rgba(255, 255, 255, 0.22);]    bg-white/10 rounded-2xl shadow-lg backdrop-blur-sm border border-white/20  p-5 ">
 
   <div class="flex flex-wrap  gap-4">
 
-          <input id="search" class=" py-2 px-4 text-[#E2E8F0]  cursor-wait duration-500 transition-all ease-in-out placeholder:text-[#E2E8F0] ring-1 ring-sky-500  outline-none border-[#2E3A47] border rounded-lg" type="search"
+          <input id="search" class=" py-2 px-3 w-full md:w-[30%] lg:w-[21%] text-[#E2E8F0]  cursor-wait duration-500 transition-all ease-in-out placeholder:text-[#E2E8F0] ring-1 ring-sky-500  outline-none border-[#2E3A47] border rounded-lg" type="search"
             placeholder="Enter the college name"  readonly
             title="Please wait,we are fetching all indian collages data... " />
 
@@ -182,20 +172,27 @@
 
 
 
-<footer class="h-auto    flex flex-col md:flex-row justify-between items-center w-full max-w-8xl bg-[#111D28] py-5 md:py-3 lg:py-0" >
+<footer class="w-full bg-[#111D28] py-6 md:py-4">
+  
+  <div class="max-w-7xl mx-auto px-4 py-1 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+    
+    <!-- left side -->
+    <div class="w-full md:w-auto">
+      <h3 class="text-xs text-white/80">© 2026 Copyright
+        <a href="https://cyberdudenetworks.com/" target="_blank" class="inline-block text-sky-500 hover:scale-105 active:scale-95 transition-all hover:px-2 duration-300 ease-in-out drop-shadow-lg [text-shadow:0_0_30px_rgba(56,189,248,0.3)]">
+          CyberDude Networks Pvt. Ltd.</a>All Rights Reserved. </h3>
+    </div>
 
-  <!-- left side -->
-<div class="flex">
+    <!-- center side -->
+    <div class="w-full md:w-auto py-1">
+      <h2 class="text-xs text-white/80">Built with 
+        <span class="inline-block animate-pulse drop-shadow-[0_0_8px_rgba(56,189,248,0.3)]">💙</span> by  the <a  href="https://interns.cyberdudenetworks.com/"  target="_blank" class="text-sky-500/80 hover:text-sky-400 transition pl-0.5">  CyberDude Internship Team</a>
+      </h2>
+    </div>
 
-  <h3 class="text-xs  p-5 lg:pl-20 text-white/80">
-    © 2026 Copyright
-   <a href="https://cyberdudenetworks.com/" target="_blank" class="inline-block hover:scale-105 py-2 md:py-0  hover:px-1  text-sky-500 drop-shadow-lg  [text-shadow:0_0_50px_rgba(56,189,248,0.3)] cursor-pointer active:scale-95 transition-all duration-300 ease-in-out">
-       CyberDude Networks Pvt. Ltd. </a>  All Rights Reserved.</h3>
-</div>
 
-<!-- right side -->
-
-<div class="flex  items-center justify-center py-5 md:py-3 lg:py-0 px-5 md:px-8 lg:px-10 gap-4 md:gap-6 lg:gap-8  ">
+    <!-- right side -->
+     <div class="flex  items-center justify-center py-2 md:py-3 lg:py-0 px-5 md:px-8 lg:px-10 gap-4 md:gap-6 lg:gap-8  ">
 
 <!-- facebook -->
 
@@ -251,15 +248,13 @@
   <div>
 
 
+
+
+
+
   </div>
 
-</div>
-
-
-
-
 </footer>
-
 
 
 
@@ -269,3 +264,6 @@
 </body>
 
 </html>
+
+
+
