@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CyberDude – Indian Colleges Dataset</title>
   <link rel="shortcut icon" href="/college-api/assets/fav-Q0f1FLCZ.png" type="image/x-icon">
-  <script type="module" crossorigin src="/college-api/assets/index-CIU2bUYg.js"></script>
-  <link rel="stylesheet" crossorigin href="/college-api/assets/index-DTIcroRU.css">
+  <script type="module" crossorigin src="/college-api/assets/index-D66vquIs.js"></script>
+  <link rel="stylesheet" crossorigin href="/college-api/assets/index-CgBeVCt6.css">
 </head>
 
 <body>
@@ -54,15 +54,15 @@
             placeholder="Enter the college name"  readonly
             title="Please wait,we are fetching all indian collages data... " />
 
-            <button id="search-btn" class="px-4 py-2 bg-sky-500/60 rounded-xl text-white cursor-pointer hover:bg-sky-500/40 transition-all duration-300 ease-in-out ">Search</button>
+            <button id="search-btn" class="px-4 py-2 bg-sky-500/60  rounded-xl text-white cursor-pointer hover:bg-sky-500/40 transition-all duration-300 ease-in-out ">Search</button>
 
  
           <select id="state" class="w-full py-2 pl-4 border text-[#E2E8F0] border-[#2E3A47] rounded-lg outline-none ring-1 ring-sky-500 transition">
-            <option class="text-[#E2E8F0] border-[#2E3A47]  " disabled selected>State</option>
+            <option class="text-[#E2E8F0] border-[#2E3A47] bg-[#202934] " disabled selected>State</option>
           </select>
 
-          <select id="district" class="w-full py-2 text-[#E2E8F0] px-4 border border-[#2E3A47] rounded-lg outline-none ring-1 ring-sky-500 transition">
-            <option  class="text-[#E2E8F0] border-[#2E3A47] bg-[#202934] " disabled selected>District</option>
+          <select id="district" class="w-full py-2 text-[#E2E8F0] px-4 border   border-[#2E3A47] rounded-lg outline-none ring-1 ring-sky-500 transition">
+            <option  class="text-[#E2E8F0] border-[#2E3A47] bg-[#202934]  " disabled selected>District</option>
           </select>
 
           <select id="institution" class="w-full text-[#E2E8F0] py-2 px-4 border border-[#2E3A47] rounded-lg outline-none ring-1 ring-sky-500 transition">
@@ -78,11 +78,11 @@
           </select>
 
            <select id="University" class="w-full py-2 text-[#E2E8F0] px-4 border border-[#2E3A47] rounded-lg outline-none ring-1 ring-blue-500 transition">
-            <option  class="text-[#E2E8F0] border-[#2E3A47] " disabled selected>University</option>
+            <option  class="text-[#E2E8F0] border-[#2E3A47] bg-[#202934] " disabled selected>University</option>
             </select>
 
             <select id="programme" class="w-full py-2 px-4 border text-[#E2E8F0] border-[#2E3A47] rounded-lg outline-none ring-1 ring-blue-500 transition">            
-              <option disabled selected>Programme</option>
+              <option disabled selected class="text-[#E2E8F0] border-[#2E3A47] bg-[#202934] ">Programme</option>
             
             </select>
 
@@ -106,7 +106,12 @@
 
 
    <dialog id="course-info" class="m-auto p-10 relative min-h-50 w-2xl md:w-3xl lg:w-4xl xl:w-5xl rounded-2xl ">
-      <button type="button" class="absolute top-3 right-4 p-1 outline-none!" id="course-dialog-close-btn">X</button>
+      <button type="button" class="absolute top-3 right-4 p-1 outline-none!" id="course-dialog-close-btn">
+
+        <svg class="hover:text-gray-700 text-gray-900 cursor-pointer transition-all duration-300 ease-in-out " xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.4l-4.9 4.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.9-4.9l-4.9-4.9q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.9 4.9l4.9-4.9q.275-.275.7-.275t.7.275t.275.7t-.275.7L13.4 12l4.9 4.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"/></svg>
+
+
+      </button>
       <div class="relative overflow-x-auto shadow border rounded-lg mt-5">
         <table class="w-full text-sm text-left rtl:text-right text-body">
           <thead class="text-sm text-body border-b border-default">
@@ -181,7 +186,7 @@
     <!-- left side -->
     <div class="w-full md:w-auto">
       <h3 class="text-xs text-white/80">© 2026 Copyright
-        <a href="https://cyberdudenetworks.com/" target="_blank" class="inline-block text-sky-500 hover:scale-105 active:scale-95 transition-all hover:px-2 duration-300 ease-in-out drop-shadow-lg [text-shadow:0_0_30px_rgba(56,189,248,0.3)]">
+        <a href="https://cyberdudenetworks.com/" target="_blank" class="inline-block text-sky-500 hover:scale-105 active:scale-95 hover:text-sky-400 transition-all hover:px-2 duration-300 ease-in-out drop-shadow-lg [text-shadow:0_0_30px_rgba(56,189,248,0.3)]">
           CyberDude Networks Pvt. Ltd.</a>All Rights Reserved. </h3>
     </div>
 
@@ -194,7 +199,7 @@
 
 
     <!-- right side -->
-     <div class="flex  items-center justify-center py-2 md:py-3 lg:py-0 px-5 md:px-8 lg:px-10 gap-4 md:gap-6 lg:gap-8  ">
+     <div class="flex  items-center justify-center py-2 md:py-3 lg:py-0 px-5 md:px-8 lg:px-5 gap-4 md:gap-6 lg:gap-8  ">
 
 <!-- facebook -->
 
