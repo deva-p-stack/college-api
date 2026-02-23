@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // element var
   const districtEl = document.getElementById("district");
   const searchInputEL = document.getElementById("search");
-  const searchBtnEl = document.getElementById("search-btn");
+  // const searchBtnEl = document.getElementById("search-btn");
   const stateEl = document.getElementById("state");
   const containerEl = document.getElementById("con");
   const institutionTypeEl = document.getElementById("institution");
@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   const courseDialogCloseBtnEL = document.getElementById(
     "course-dialog-close-btn",
   );
-
-
+  const loadingAlertEL = document.getElementById("loading-alert");
+  
   // data var
   const BASE_API_KEY = "https://indian-colleges-list.vercel.app/api";
   let collageDataArr = [];
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const option = document.createElement("option");
       option.textContent = `${item.name}`;
       option.value = item.name;
-      option.className="text-[#E2E8F0] border-[#2E3A47] bg-[#202934]";
+      option.className = "text-[#E2E8F0] border-[#2E3A47] bg-[#202934]";
 
       stateEl.append(option);
     });
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   function addDropdownValues(arr, dropdown) {
     arr.forEach((val) => {
       const option = document.createElement("option");
-      option.className="text-[#E2E8F0] border-[#2E3A47] bg-[#202934]";
+      option.className = "text-[#E2E8F0] border-[#2E3A47] bg-[#202934]";
       option.textContent = val;
       option.value = val;
       dropdown.append(option);
@@ -147,13 +147,28 @@ document.addEventListener("DOMContentLoaded", async function () {
     const allOptionEl = document.createElement("option");
     allOptionEl.textContent = `All ${optionName}`;
     allOptionEl.value = "All";
-    allOptionEl.className="text-[#E2E8F0] border-[#2E3A47] bg-[#202934];"
+    allOptionEl.className = "text-[#E2E8F0] border-[#2E3A47] bg-[#202934];";
     allOptionEl.selected = true;
     dropdownEL.prepend(allOptionEl);
   }
 
   // result output div
- function renderFn(collageData) {
+  function renderFn(collageData) {
+    // if no data available trigger below if
+    if (
+      collageData.length === 0 ||
+      collageData === "" ||
+      collageData === null ||
+      collageData === undefined
+    ) {
+      containerEl.classList.add("text-white");
+      containerEl.innerHTML = `<div class="col-span-full mt-5 md:mt-20">
+        <img src="./public/no-data-found/empty-box.jpg" class="w-50 m-auto">
+        <p class="text-blue-100 text-center">No Data falseound</p>
+       </div>`;
+      return;
+    }
+
     const fragment = document.createDocumentFragment();
     fragment.replaceChildren();
     containerEl.innerHTML = "";
@@ -163,45 +178,40 @@ document.addEventListener("DOMContentLoaded", async function () {
       cardEl.className =
         "bg-[#0F1C2B] w-full sm:w-87.5 min-h-50 space-y-2 shadow-lg rounded-lg shadow-lg p-5 pb-10 flex flex-col content-center border border-white/20 relative";
 
-
-             function toTitleCase(text) {
-                  return text
-                  .toLowerCase()
-                  .split(" ")
-                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join(" ");
-}
-
-
+      function toTitleCase(text) {
+        return text
+          .toLowerCase()
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      }
 
       const collageNameEl = document.createElement("h3");
-      collageNameEl.className = "font-semibold text-lg text-center text-slate-200 ";
-      collageNameEl.textContent = collage.institute_name
+      collageNameEl.className =
+        "font-semibold text-lg text-center text-slate-200 ";
+      collageNameEl.textContent = collage.institute_name;
 
-      
-      
-        const universityEl2 = document.createElement("p");
-        universityEl2.className = "text-slate-100 pt-1";
-        universityEl2.innerHTML = `University: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.state)}</span>`;
+      const universityEl2 = document.createElement("p");
+      universityEl2.className = "text-slate-100 pt-1";
+      universityEl2.innerHTML = `University: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.state)}</span>`;
 
-// ${collage.institution_type}
-
+      // ${collage.institution_type}
 
       const institutionTypeEL = document.createElement("p");
       institutionTypeEL.innerHTML = `Institution: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.institute_name)}</span>`;
-      institutionTypeEL.className="text-slate-100 "
+      institutionTypeEL.className = "text-slate-100 ";
 
       const stateEl = document.createElement("p");
       stateEl.innerHTML = `State: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.state)}</span>`;
-      stateEl.className ="pt-2 text-slate-100";
+      stateEl.className = "pt-2 text-slate-100";
 
       const districtEl = document.createElement("p");
       districtEl.innerHTML = `District: <span class="font-semibold text-sky-400/80"> ${toTitleCase(collage.district)}</span>`;
-      districtEl.className ="pt-2 text-slate-100";
- 
+      districtEl.className = "pt-2 text-slate-100";
+
       const addressEl = document.createElement("p");
       addressEl.innerHTML = `Address: <span class="font-semibold text-sky-400/80">${toTitleCase(collage.address)}</span>`;
-      addressEl.className='pb-3 pt-2 text-slate-100';
+      addressEl.className = "pb-3 pt-2 text-slate-100";
 
       const courseBtnEl = document.createElement("button");
       courseBtnEl.className =
@@ -213,17 +223,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       courseBtnEl.addEventListener("click", () => courseInfoShow(collage));
 
- 
       // append
       cardEl.append(
         collageNameEl,
         institutionTypeEL,
-       
-         universityEl2,
+        universityEl2,
         stateEl,
         districtEl,
         addressEl,
-       
         courseBtnEl,
       );
       fragment.append(cardEl);
@@ -258,7 +265,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  //institution type
+  //search by institution type
   institutionTypeEl.addEventListener("change", () => {
     // value extract in the html page
     let institutionType = institutionTypeEl.value;
@@ -316,20 +323,41 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   // input search
-  searchBtnEl.addEventListener("click", collageSearchByName);
+  // searchBtnEl.addEventListener("click", collageSearchByName);
+  searchInputEL.addEventListener("input", debounce(collageSearchByName, 2000));
+
+  function debounce(func, delay) {
+    let timer;
+
+    return function (...args) {
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
+  }
 
   const allCollagesArrValue = await getAllCollages(allStateArr);
 
   // search activate Fn
   if (allCollagesArrValue) {
+    loadingAlertEL.classList.add("hidden");
     searchInputEL.readOnly = false;
-    searchInputEL.title = "now you can search😊..."
+    searchInputEL.title = "now you can search😊...";
     searchInputEL.classList.replace("cursor-wait", "cursor-text");
     searchInputEL.classList.add("outline", "outline-green-600", "scale-110");
     setTimeout(() => {
-      searchInputEL.classList.remove("outline", "outline-green-600", "scale-110");
+      searchInputEL.classList.remove(
+        "outline",
+        "outline-green-600",
+        "scale-110",
+      );
     }, 3000);
   }
+
+  // first render All collages show
+  // renderFn(allCollagesArrValue);
 
   async function getAllCollages(arr) {
     try {
