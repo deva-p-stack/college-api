@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 #University {
-  width: 125px;       
+  width: 130px;       
   max-width: 250px;   
 }
 #state{
 
- width: 85px;       
+ width: 150px;       
   max-width: 250px;
 
 }
@@ -19,14 +19,14 @@ dialog::backdrop{
 
 #district{
 
- width: 110px;       
+ width: 120px;       
   max-width: 250px;
 
 }
 
 #institution{
 
- width: 125px;       
+ width: 130px;       
   max-width: 250px;
 
 }
@@ -34,7 +34,7 @@ dialog::backdrop{
 
 
 #programme{
- width: 137px;       
+ width: 140px;       
   max-width: 250px;
 
 }
