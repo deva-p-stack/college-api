@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     ) {
       containerEl.classList.add("text-white");
       containerEl.innerHTML = `<div class="col-span-full mt-5 md:mt-20">
-        <img src="./public/no-data-found/empty-box.jpg" class="w-50 m-auto">
+        <img src="/no-data-found/empty-box.jpg" class="w-50 m-auto">
         <p class="text-blue-100 text-center">No Data found</p>
        </div>`;
       return;
