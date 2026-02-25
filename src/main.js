@@ -20,6 +20,25 @@ document.addEventListener("DOMContentLoaded", async function () {
   const filterDivEl = document.getElementById("filter-div");
   const filteredCardCount = document.getElementById("card-count");
   const filterStatusEl = document.getElementById("filter-status");
+  const restBtnEl = document.getElementById("reset-btn");
+
+    const icon = document.getElementById("clear");
+  
+ icon.addEventListener("click", function () {
+  icon.classList.toggle("rotate-180");
+  containerEl.innerHTML = '';
+  
+});
+
+  restBtnEl.addEventListener("click", () => {
+    filteredStateArr = [];
+    filteredDistrictArr = [];
+    filteredInstituteArr = [];
+    filteredUniversityArr = [];
+    filteredProgrammeArr = [];
+
+    renderFn([], false, true);
+  });
 
   // data var
   const BASE_API_KEY = "https://indian-colleges-list.vercel.app/api";
@@ -181,22 +200,43 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   // result output div
-  function renderFn(collageData, searchName = false) {
+  function renderFn(collageData, searchName = false, reset = false) {
     // if no data available trigger below if
-    if (
-      collageData.length === 0 ||
-      collageData === "" ||
-      collageData === null ||
-      collageData === undefined
-    ) {
-      containerEl.classList.add("text-white");
-      containerEl.innerHTML = `<div class="col-span-full mt-5 md:mt-20">
-      
+    {
+      if (
+        collageData.length === 0 ||
+        collageData === "" ||
+        collageData === null ||
+        collageData === undefined
+      ) {
+        if (reset) {
+          containerEl.innerHTML = `<div class="col-span-full text-white mt-5 md:mt-20">
+        <p class="text-blue-100 text-center">Previous searches are cleared now you can search again 🔄️...</p>
+       </div>`;
+          // add filter el
+          filterDivEl.classList.replace("flex", "hidden");
+
+          searchInputEL.value = "";
+
+          // other options reset
+          districtEl.innerHTML = "";
+          addAllOptionInDropdown("District", districtEl);
+          institutionTypeEl.innerHTML = "";
+          addAllOptionInDropdown("Institution", institutionTypeEl);
+          UniversityEl.innerHTML = "";
+          addAllOptionInDropdown("University", UniversityEl);
+          programmeEl.innerHTML = "";
+          addAllOptionInDropdown("Programme", programmeEl);
+          return;
+        } else {
+          containerEl.innerHTML = `<div class="col-span-full text-white mt-5 md:mt-20">
         <p class="text-blue-100 text-center">No Data found</p>
        </div>`;
-      // add filter el
-      filterDivEl.classList.replace("flex", "hidden");
-      return;
+          // add filter el
+          filterDivEl.classList.replace("flex", "hidden");
+          return;
+        }
+      }
     }
 
     // remove search alert el
@@ -471,7 +511,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       const courseBtnEl = document.createElement("button");
       courseBtnEl.className =
-        "absolute right-3 bottom-3 px-3  py-2 bg-slate-800/80 text-sky-400/80 active:scale-95 transition-all border border-transparent hover:border-sky-400 hover:bg-gray-900/70 hover:-translate-y-0.5 duration-300 ease-in-out rounded cursor-pointer";
+        "absolute right-3 bottom-3 px-3 py-2 bg-slate-800/80 text-sky-400/80 active:scale-95 transition-all border border-transparent hover:border-sky-400 hover:bg-gray-900/70 hover:-translate-y-0.5 duration-300 ease-in-out rounded cursor-pointer";
       courseBtnEl.textContent = `View Courses`;
 
       // course info show
@@ -493,7 +533,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     containerEl.append(fragment);
   }
-
 
   // event handling
 
@@ -723,7 +762,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     courseTableEl.innerHTML = "";
 
     programmesArr.forEach((programme) => {
-      // console.log(programme);
+      //   console.log(programme);
 
       const trEl = document.createElement("tr");
       // course
