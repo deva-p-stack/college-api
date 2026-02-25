@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     collageData.forEach((collage) => {
       const cardEl = document.createElement("div");
       cardEl.className =
-        "bg-[#0F1C2B] w-full sm:w-87.5 min-h-50 space-y-2 shadow-lg rounded-lg shadow-lg p-5 pb-10 flex flex-col content-center border border-white/20 relative";
+        "bg-[#0F1C2B] w-full sm:w-87.5 min-h-50 hover:shadow-2xl transform transition-all ease-in-out hover:-translate-y-1 duration-300 ease-in-out  space-y-2 shadow-lg rounded-lg shadow-lg p-5 pb-10 flex flex-col content-center border border-white/20 relative";
 
       function toTitleCase(text) {
         return text
