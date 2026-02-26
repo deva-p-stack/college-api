@@ -596,11 +596,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else {
       if (filteredDistrictArr.length === 0) {
         filteredDistrictArr = filteredStateArr;
-      } else {
+      }
+      // filter
         filteredInstituteArr = filteredDistrictArr.filter(
           (collage) => collage.institution_type === institutionType,
         );
-      }
+      
       // console.log(filteredData);
       renderFn(filteredInstituteArr);
 
@@ -627,7 +628,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (filteredDistrictArr.length === 0) {
           filteredInstituteArr = filteredStateArr;
         }
-      } else {
+      }
+      // filter
         filteredUniversityArr = filteredInstituteArr.filter(
           (collage) => collage.university === university,
         );
@@ -638,7 +640,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // other options reset
         programmeEl.value = "All";
-      }
+      
     }
   });
 
@@ -657,7 +659,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             filteredUniversityArr = filteredStateArr;
           }
         }
-      } else {
+      } 
+      // filter
         filteredProgrammeArr = filteredUniversityArr.filter((collage) => {
           const hasMatch = collage.programmes.some((programme) => {
             // console.log("programme: ", programme.programme);
@@ -675,7 +678,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
 
         renderFn(filteredProgrammeArr);
-      }
+      
     }
   });
 
